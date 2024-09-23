@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export function Form({ setAfterGenerateShown }) {
+export function Form({ setAfterGenerateShown, createPassword }) {
 	const [value, setValue] = useState(0)
 	const [error, setError] = useState('')
 
@@ -8,6 +8,7 @@ export function Form({ setAfterGenerateShown }) {
 		e.preventDefault()
 		if (value > 0) {
 			setAfterGenerateShown(true)
+			createPassword(value)
 			setError('')
 		} else {
 			setError('Set password length')
@@ -30,15 +31,15 @@ export function Form({ setAfterGenerateShown }) {
 				/>
 			</div>
 			<div className='flex gap-2'>
-				<input type='checkbox' name='options' value='special' />
+				<input type='checkbox' name='special' value='special' />
 				<span>Special characters</span>
 			</div>
 			<div className='flex gap-2'>
-				<input type='checkbox' name='options' value='numbers' />
+				<input type='checkbox' name='numbers' value='numbers' />
 				<span>Numbers</span>
 			</div>
 			<div className='flex gap-2'>
-				<input type='checkbox' name='options' value='uppercase' />
+				<input type='checkbox' name='uppercase' value='uppercase' />
 				<span>Uppercase</span>
 			</div>
 			<span>
