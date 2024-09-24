@@ -40,7 +40,7 @@ Start the server
 
 ## Screenshots
 
-![App Screenshot](../src/img/readme_img.png)
+![App Screenshot](./src/img/readme_img.png)
 
 
 ## Features
