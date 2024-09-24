@@ -24,7 +24,7 @@ export function Form({ setAfterGenerateShown, createPassword, theme, colorClasse
 			<div className='flex gap-2 items-center'>
 				<span>Password length: </span>
 				<input
-					className={`bg-${colorClasses[theme]} text-white p-2 rounded-lg text-center w-1/4`}
+					className={`bg${colorClasses[theme]} text-white p-2 rounded-lg text-center w-1/4`}
 					type='number'
 					name='passNum'
 					value={length}

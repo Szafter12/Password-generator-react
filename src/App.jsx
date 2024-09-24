@@ -9,10 +9,10 @@ function App() {
 	const [theme, setTheme] = useState("default")
 
 	const colorClasses = {
-		default: "slate-800",
-		pink: "pink-500",
-		purple: "purple-500",
-		green: "emerald-500"
+		default: "-slate-800",
+		pink: "-pink-500",
+		purple: "-purple-500",
+		green: "-emerald-500"
 	}
 
 	function changeTheme(e) {
@@ -45,11 +45,11 @@ function App() {
 	}
 
 	return (
-		<div className={`min-h-screen w-full flex justify-center  items-center bg-${colorClasses[theme]}`}>
+		<div className={`min-h-screen w-full flex justify-center  items-center bg${colorClasses[theme]}`}>
 			<div className='absolute top-8 left-8 flex gap-3 items-center'>
 				<label className={`font-semibold ${theme == "default" ? "text-white" : "text-slate-800"}`} htmlFor="theme">Select App Theme</label>
 				<select onChange={changeTheme} className='p-2 rounded-lg border-2 border-solid border-slate-800' value={theme} name="theme" id="theme">
-					<option value="default" selected>Default</option>
+					<option value="default">Default</option>
 					<option value="pink">Pink</option>
 					<option value="purple">Purple</option>
 					<option value="green">Green</option>
