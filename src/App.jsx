@@ -6,13 +6,28 @@ function App() {
 	const [password, setPassword] = useState('')
 	const [isPassVisible, setPassVisible] = useState(false)
 	const [isAfterGenerateShow, setAfterGenerateShown] = useState(false)
-	const characters = 'abcdefghijklmnopqrstuvwxyz'
-	let newPassword = ''
 
-	function createPassword(length) {
+	function createPassword({ length, includeUppercase, includeNumbers, includeSpecialChars }) {
+		const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz'
+		const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+		const numbersChars = '1234567890'
+		const specialChars = '!@#$%^&*()_+-=?/.>,<{}[];:`~'
+		let charSet = lowercaseChars
+
+		if(includeNumbers) {
+			charSet += numbersChars
+		}
+		if(includeSpecialChars) {
+			charSet += specialChars
+		}
+		if(includeUppercase) {
+			charSet += uppercaseChars
+		}
+
+		let newPassword = ''
 		for (let i = 0; i < length; i++) {
 			const randomIndex = Math.floor(Math.random() * length)
-			newPassword += characters[randomIndex]
+			newPassword += charSet[randomIndex]
 		}
 		setPassword(newPassword)
 	}
@@ -20,7 +35,9 @@ function App() {
 	return (
 		<div className='p-6 bg-slate-50 min-h-[400px] md:w-[500px] rounded-xl text-lg overflow-hidden'>
 			<Form setAfterGenerateShown={setAfterGenerateShown} createPassword={createPassword} />
-			{isAfterGenerateShow && <AfterGenerated isPassVisible={isPassVisible} setPassVisible={setPassVisible} password={password} />}
+			{isAfterGenerateShow && (
+				<AfterGenerated isPassVisible={isPassVisible} setPassVisible={setPassVisible} password={password} />
+			)}
 		</div>
 	)
 }
