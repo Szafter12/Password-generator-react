@@ -26,7 +26,7 @@ function App() {
 
 		let newPassword = ''
 		for (let i = 0; i < length; i++) {
-			const randomIndex = Math.floor(Math.random() * length)
+			const randomIndex = Math.floor(Math.random() * charSet.length)
 			newPassword += charSet[randomIndex]
 		}
 		setPassword(newPassword)
