@@ -10,7 +10,7 @@ export function AfterGenerated({isPassVisible, setPassVisible, password}) {
         };
 
 	return (
-		<>
+		<div className="flex flex-col items-center">
 			<p className='mt-5 font-bold text-xl'>Your password:</p>
 			<p className='mt-2 break-words word break-all'>
                 {isPassVisible ? password : "*".repeat(password.length) }
@@ -23,6 +23,6 @@ export function AfterGenerated({isPassVisible, setPassVisible, password}) {
 					Copy
 				</button>
 			</div>
-		</>
+		</div>
 	)
 }

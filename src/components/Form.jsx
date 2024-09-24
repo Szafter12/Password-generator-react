@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export function Form({ setAfterGenerateShown, createPassword }) {
+export function Form({ setAfterGenerateShown, createPassword, theme, colorClasses }) {
 	const [length, setLength] = useState(0)
 	const [error, setError] = useState('')
 	const [includeUppercase, setIncludeUppercase] = useState(false)
@@ -9,7 +9,7 @@ export function Form({ setAfterGenerateShown, createPassword }) {
 
 	function handleSubmit(e) {
 		e.preventDefault()
-		if (length > 4) {
+		if (length > 4 && length <= 48) {
 			setAfterGenerateShown(true)
 			createPassword({ length, includeUppercase, includeNumbers, includeSpecialChars })
 			setError('')
@@ -24,16 +24,15 @@ export function Form({ setAfterGenerateShown, createPassword }) {
 			<div className='flex gap-2 items-center'>
 				<span>Password length: </span>
 				<input
-					className='bg-slate-600 text-slate-50 p-2 text-center rounded-lg w-1/3'
+					className={`bg-${colorClasses[theme]} text-white p-2 rounded-lg text-center w-1/4`}
 					type='number'
 					name='passNum'
 					value={length}
-					max={48}
 					placeholder='length'
 					onChange={e => setLength(e.target.value)}
 				/>
 			</div>
-			<div className='flex gap-2'>
+			<div className='flex gap-2 items-center'>
 				<input
 					type='checkbox'
 					name='special'
@@ -43,7 +42,7 @@ export function Form({ setAfterGenerateShown, createPassword }) {
 				/>
 				<span>Special characters</span>
 			</div>
-			<div className='flex gap-2'>
+			<div className='flex gap-2 items-center'>
 				<input
 					type='checkbox'
 					name='numbers'
@@ -53,7 +52,7 @@ export function Form({ setAfterGenerateShown, createPassword }) {
 				/>
 				<span>Numbers</span>
 			</div>
-			<div className='flex gap-2'>
+			<div className='flex gap-2 items-center'>
 				<input
 					type='checkbox'
 					name='uppercase'
